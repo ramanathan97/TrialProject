@@ -9,13 +9,6 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('login');
 
-  this.route('first', function() {
-    this.route('home');
-  });
-
-  this.route('parent', function() {
-    this.route('child');
-  });
   this.route('signup');
   this.route('performance');
   this.route('ranking');
