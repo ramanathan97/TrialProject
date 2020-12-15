@@ -11,7 +11,6 @@ export default Component.extend({
        submitData: function(){
            let distance=this.get('distance');
            let duration=this.get('duration');
-           this.set("state","andhra");
            let performance = this.store.createRecord('performance', {
                distance:distance,
                duration:duration,
