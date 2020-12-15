@@ -1,0 +1,31 @@
+<div id="wholesignup">
+  <form {{action 'createUser' on="submit"}}>
+    <div class="signuphead">
+      <h1>Run Tracker</h1>
+    </div>
+    <div class="signupbody">
+      <label for="">Name</label> <br>
+      {{input type="text" value=name }}<br>
+
+      <label for="">age</label><br>
+      {{input type="text" value=email }}<br>
+
+      <label for="">email</label><br>
+      {{input type="text" value=age }}<br>
+
+      <label for="">city</label><br>
+      {{input type="text" value=city }}<br>
+
+      <label for="">State</label><br>
+      {{input type="text" value=state }}<br>
+
+      <label for="">Country</label><br>
+      {{input type="text" value=country }}<br>
+
+      <label for="">password</label><br>
+      {{input type="password" value=password }}<br><br>
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+</div>
+{{outlet}}

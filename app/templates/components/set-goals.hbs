@@ -1,0 +1,14 @@
+<form {{action 'submitData' on="submit"}}>
+    <div id="wholegoals">
+        <div class="goalhead">
+            <h1>Set your Goals</h1>
+        </div>
+        <div class="goalbody">
+            <label for="">Enter your duration goal</label><br>
+            {{input type="text" name="durationgoal" value=durationgoal }}<br><br>
+            <label for="">Enter your distance goal</label><br><br>
+            {{input type="text" name="distancegoal" value=distancegoal }}<br><br>
+            <button type="submit" id="goalsubmit">Submit</button>
+        </div>
+    </div>
+</form>

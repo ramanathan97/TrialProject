@@ -1,0 +1,45 @@
+<div class="performanceall">
+
+    <div class="performancehead">
+        <h1> Performance and Goals</h1>
+    </div>
+    <div id="performbtns">
+        <button {{action "enterData"}} class="pbtn">Enter your performances</button>
+        <button {{action 'getPerformances'}} class="pbtn">Display Performances</button>
+        <button {{action 'setGoals'}} class="pbtn">Enter all your goals</button>
+        <button {{action 'performancechart'}} class="pbtn">Performance on chart</button>
+    </div>
+    <div class="performancebody">
+        {{#if (eq display "dataentering")}}
+        {{component currentDisplay}}
+        {{/if}}
+        {{log this.a}}
+
+        {{#if (eq this.display "getperformances")}}
+        <div id="displayall">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>distance</th>
+                    <th>duration</th>
+                </tr>
+                {{#each  this.performances as |performance|}}
+                <tr>
+                    <td>{{performance.user.name}}</td>
+                    <td>{{performance.distance}}</td>
+                    <td>{{performance.duration}}</td>
+                </tr>
+                {{/each}}
+                {{log data}}
+            </table>
+        </div>
+        {{/if}}
+
+    </div>
+    <div id="chartholder">
+        {{#if (eq this.display "displaychart")}}
+        {{fusioncharts-xt width=width height=height type=type dataFormat=dataFormat
+        dataSource=dataSource}}
+        {{/if}}
+    </div>
+</div>

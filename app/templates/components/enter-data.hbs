@@ -1,0 +1,16 @@
+<div class="enterdatawhole">
+  <div class="enterdatahead">
+    <h1>Enter your data</h1>
+  </div>
+  <div class="enterdatabody">
+    <form {{action "submitData" on="submit"}}>
+      <label for="">Enter your starting date and time</label><br><br>
+      {{input type="datetime-local" name="starttime" value=starttime }}<br><br>
+      <label for="">Enter your duration of running</label><br><br>
+      {{input type="text" name="duration" value=duration }}<br><br>
+      <label for="">Enter your distance travelled</label><br><br>
+      {{input type="text" name="distance" value=distance }}<br><br>
+      <button type="submit" id="datasubmit">Submit</button>
+    </form>
+  </div>
+</div>
