@@ -11,7 +11,7 @@ export default Controller.extend({
              persons.then(function(value){
                  value.forEach(element=>{
                      if(element.email==currentmail&&element.password==currentpassword){
-                                                window.location = "http://localhost:4200/performance"
+                         window.location = "http://localhost:4200/performance"
 
                      }
                      
