@@ -4,12 +4,11 @@ export default Route.extend({
     rankCity:false,
     displayPerformance:false,
     currentcity:'',
-    performances:[],
     beforeModel(){
-    let access=localStorage.getItem("value");
-    if(access==false){
+      let access=localStorage.getItem("value");
+      if(access==false){
         this.transitionTo('login')
-    }     
+      }     
     },
     model(){
         return this.store.query('performance', { include: 'user' })
