@@ -6,10 +6,10 @@ export default Route.extend({
     currentcity:'',
     performances:[],
     beforeModel(){
-        let mail=localStorage.getItem("email");
-        if(mail==undefined){
+    let access=localStorage.getItem("value");
+    if(access==false){
         this.transitionTo('login')
-    }        
+    }     
     },
     model(){
         return this.store.query('performance', { include: 'user' })
