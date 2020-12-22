@@ -17,10 +17,11 @@ export default Route.extend({
                         password: controller.get("password")
                     }),
                 })
-                localStorage.setItem('email',controller.get("email"))
                 val.then(value => {
-                    if (value == true)
+                   localStorage.setItem('value',value)
+                    if (value == true){
                         this.transitionToRoute('performance');
+                    }
                     else
                     toastr.error('Please enter correct user name and password')
                 }
