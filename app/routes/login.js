@@ -19,14 +19,12 @@ export default Route.extend({
                 })
                 localStorage.setItem('email',controller.get("email"))
                 val.then(value => {
-                    console.log(value)
                     if (value == true)
                         this.transitionToRoute('performance');
                     else
                     toastr.error('Please enter correct user name and password')
                 }
                 )
-                console.log(val)
             }
         })
     },
