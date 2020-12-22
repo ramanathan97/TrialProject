@@ -35,7 +35,7 @@ export default Route.extend({
         },
         performancechart() {
             this.set("display", "displaychart")
-            {
+            
                     let data = [];
                     model.forEach(element => {
                         data.push({
@@ -53,7 +53,7 @@ export default Route.extend({
                     };
                     this.set('dataSource', myDataSource);
                 })
-            }
+            
         }
         })
     }    
