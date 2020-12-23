@@ -18,7 +18,7 @@ export default Route.extend({
                     }),
                 })
                 val.then(value => {
-                   localStorage.setItem('value',value)
+                  localStorage.setItem('servervalue',value)
                     if (value == true){
                         this.transitionToRoute('performance');
                     }
