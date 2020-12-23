@@ -3,64 +3,62 @@
         <h2>Top Rankings</h2>
     </div>
     <div class="buttonholder">
-        <button {{action "calculateRank" "duration"}} class="pbtn">Duration wise Rankings</button>
-        <button {{action "calculateRank" "distance"}} class="pbtn">Distance wise Rankings</button>
-        <button {{action  "calcCity"  }} class="pbtn">Rank based on city</button>
+        <button {{action "calculateRank" "duration"}} class="performancebtn">Duration wise Rankings</button>
+        <button {{action "calculateRank" "distance"}} class="performancebtn">Distance wise Rankings</button>
+        <button {{action  "calcCity"  }} class="performancebtn">Rank based on city</button>
         <br>
     </div>
     <div class="rankbody">
-        {{#if rankCity}}
-        <label for="">Enter the city</label><br>
-        {{input type="text"name="city" value=city }}<br><br>
-        <button type="submit" {{action "sortByCity"}}>Sort</button><br><br>
+        {{#if (eq display "rankCity")}}
+            <label for="">Enter the city</label><br>
+            {{input type="text"name="city" value=city }}<br><br>
+            <button type="submit" {{action "sortByCity"}}>Sort</button><br><br>
         {{/if}}
-
         {{#if displayPerformance}}
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>distance(in Kms)</th>
-            </tr>
-            {{#each (sort-by "distance" this.userperformance) as |performance|}}
-            {{#if (eq performance.user.location currentcity)}}
-            <tr>
-                <td>{{performance.user.name}}</td>
-                <td>{{performance.distance}}</td>
-            </tr>
-            {{/if}}
-            {{/each}}
-        </table>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>distance(in Kms)</th>
+                </tr>
+                {{#each (sort-by "distance" this.model) as |performance|}}
+                {{#if (eq performance.user.location currentcity)}}
+                    <tr>
+                        <td>{{performance.user.name}}</td>
+                        <td>{{performance.distance}}</td>
+                    </tr>
+                {{/if}}
+                {{/each}}
+            </table>
         {{/if}}
-
-
-        {{#if rankDistance}}
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>distance(in kms)</th>
-            </tr>
-            {{#each (sort-by "distance" this.userperformance) as |performance|}}
-            <tr>
-                <td>{{performance.user.name}}</td>
-                <td>{{performance.distance}}</td>
-            </tr>
-            {{/each}}
-        </table>
+        {{#if (eq display "rankDistance")}}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>distance(in kms)</th>
+                </tr>
+                {{#each (sort-by "distance" this.model) as |performance|}}
+                <tr>
+                    <td>{{performance.user.name}}</td>
+                    <td>{{performance.distance}}</td>
+                </tr>
+                {{/each}}
+            </table>
         {{/if}}
-
-        {{#if rankDuration}}
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>duration(in hrs)</th>
-            </tr>
-            {{#each (sort-by "duration" this.userperformance) as |performance|}}
-            <tr>
-                <td>{{performance.user.name}}</td>
-                <td>{{performance.duration}}</td>
-            </tr>
-            {{/each}}
-        </table>
+        {{#if (eq display "rankDuration")}}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>duration(in hrs)</th>
+                </tr>
+                {{#each (sort-by "duration" this.model) as |performance|}}
+                    <tr>
+                        <td>{{performance.user.name}}</td>
+                        <td>{{performance.duration}}</td>
+                    </tr>
+                {{/each}}
+            </table>
         {{/if}}
     </div>
+    <div id="linktoperformance">{{#link-to "performance" }}{{"Performance"}}{{/link-to}}</div>
+    <button {{action 'logout'}} id="logout">Logout</button>
 </div>
