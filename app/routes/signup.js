@@ -1,15 +1,15 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+
 
 export default Route.extend({
+    ajax: service(),
     setupController(controller, model) {
+        this._super(controller, model);
+        let route = this;
         controller.set('actions', {
             createUser: function() {
-                if(this.get('name')==undefined||this.get('email')==undefined|| this.get('age')==undefined||this.get('city')==undefined||this.get('state')==undefined||this.get('country')==undefined||this.get('password')==undefined){
-                 toastr.error('Please fill all the details')
-                }
-                else{
-                  this.transitionToRoute('login')
-                }
+                let val;           
                let person = this.store.createRecord('user', {
                  name:this.get('name'),
                  email: this.get('email'),
@@ -19,8 +19,21 @@ export default Route.extend({
                  country:this.get('country'),
                  password:  this.get('password')
                });
-               person.save();
+              val= person.save();
+              
+            val.then(value => {
+                  console.log(value)
+                  if (value == true){
+                      this.transitionToRoute('login');
+                  }
+                  else
+                  toastr.error('Some Error occured')
               }
+              )
+              },
+
+            
         })
     }
 });
+
