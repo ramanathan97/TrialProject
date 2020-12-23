@@ -1,34 +1,29 @@
 import Route from '@ember/routing/route';
 export default Route.extend({
-    display:'',
-    rankCity:false,
-    displayPerformance:false,
-    currentcity:'',
     beforeModel(){
-      let access=localStorage.getItem("value");
-      if(access==false){
-        this.transitionTo('login')
-      }     
+        let access=localStorage.getItem("servervalue");
+        if(access===false||access===null){
+            this.transitionTo('login')
+        }        
     },
     model(){
         return this.store.query('performance', { include: 'user' })
     },
     setupController(controller, model) {
         this._super(controller, model);
+        controller.set("display",''),
+        controller.set("displayPerformance",false),
+        controller.set("currentcity",'')
         controller.set('actions', {
-            calculateRank: function(arg1){
-                let type=arg1;                
-                if(type=="distance")
+            calculateRank: function(type){
+                this.set('displayPerformance',false)
+                if(type==="distance")
                 {
                     this.set('display','rankDistance')
-                    this.set('rankCity',false)
-                    this.set('displayPerformance',false)
                 }   
-                if(type=="duration")
+                if(type==="duration")
                 {
                     this.set('display','rankDuration')
-                    this.set('rankCity',false)
-                    this.set('displayPerformance',false)
                 }      
             },
             sortByCity:function(){
@@ -37,8 +32,11 @@ export default Route.extend({
             },
             calcCity(){
                 this.set('display','rankCity')
-                this.set('rankCity',true)
-            }   
+            },
+            logout(){
+                localStorage.clear();
+                this.transitionToRoute("login");
+              }      
         })
     }
 });
