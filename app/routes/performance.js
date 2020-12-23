@@ -1,47 +1,30 @@
 import Route from '@ember/routing/route';
-let myDataSource={}
-export default Route.extend({ 
-   beforeModel(transition) {    
-    let access=localStorage.getItem("value");
-    if(access==false){
-        this.transitionTo('login')
-    }           
-      },
-        model(){
-            return this.store.query('performance', { include: 'user' })
+export default Route.extend({
+    beforeModel() {
+        let access = localStorage.getItem("servervalue");
+        if (access === false || access === null) {
+            this.transitionTo('login')
+        }
+    },
+    model() {
+        return this.store.query('performance', { include: 'user' })
     },
     setupController(controller, model) {
         this._super(controller, model);
-        controller.set("title",'Performance Chart');
-        controller.set("width",600)
-        controller.set("height",400)
-        controller.set("type",'column2d')
-        controller.set("dataFormat",'json')
-        controller.set("dataSource",myDataSource)
-        controller.set("displayPerformance",false)
-        controller.set("getdata",false)
-        controller.set("curentDisplay",'')
+        controller.set("title", 'Performance Chart');
+        controller.set("dataSource", null)
+        controller.set("display", '')
+        controller.set("getdata", false)
         controller.set('actions', {
-        setGoals() {
-            this.set("currentDisplay", "set-goals")
-            this.set("display", "dataentering")
-        },
-        enterData() {
-            this.set("currentDisplay", "enter-data")
-            this.set("display", "dataentering")
-        },
-        getPerformances() {
-            this.set("display", "getperformances")
-        },
-        performancechart() {
-            this.set("display", "displaychart")
-            
-                    let data = [];
-                    model.forEach(element => {
-                        data.push({
-                            label: element.user.content.name,
-                            value: element.duration.toString()
-                        })
+            performancechart() {
+                let myDataSource = {}
+                this.set("display", "displaychart")
+                let data = [];
+                this.model.forEach(element => {
+                    data.push({
+                        label: element.user.content.name,
+                        value: element.duration.toString()
+                    })
                     myDataSource = {
                         chart: {
                             caption: "Performances",
@@ -53,9 +36,13 @@ export default Route.extend({
                     };
                     this.set('dataSource', myDataSource);
                 })
-            
-        }
+            },
+            logout() {
+                localStorage.clear();
+                this.transitionToRoute("login");
+            }
         })
-    }    
+    }
 });
+
 
