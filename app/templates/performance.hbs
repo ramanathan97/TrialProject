@@ -8,13 +8,10 @@
         <button onclick={{action (mut display) "set-goals"}} class="performancebtn">Enter All your Goals</button>
         <button {{action 'performancechart'}} class="performancebtn">Performance on chart</button>
     </div>
-    <div class="performancebody">
-        {{#if (eq display "set-goals")}}
+    <div class="performancebody">  
+        {{#if (or (eq display "enter-data") (eq display "set-goals"))}}	
             {{component display}}
-        {{/if}}
-        {{#if (eq display "enter-data")}}
-            {{component display}}
-        {{/if}}
+        {{/if}}        
         {{#if (eq this.display "getperformances")}}
             <div id="displayall">
                 <table>
@@ -34,17 +31,18 @@
             </div>
         {{/if}}
     </div>
-    {{log width}}
     <div id="chartholder">
         {{#if (eq this.display "displaychart")}}
-            {{fusioncharts-xt 
+            {{
+            fusioncharts-xt 
             width=600 
             height=400 
             type=type 
             dataFormat='json'
-            dataSource=dataSource}}
+            dataSource=dataSource
+            }}
         {{/if}}
     </div>
-    <div id="linktoranking">{{#link-to "ranking" }}{{"Rankings"}}{{/link-to}}</div>
+    {{#link-to "ranking" id="linktoranking" }}{{"Rankings"}}{{/link-to}}
     <button {{action 'logout'}} id="logout">Logout</button>
 </div>
