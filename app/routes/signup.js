@@ -8,15 +8,15 @@ export default Route.extend({
         controller.set('actions', {
             createUser: function (name,age,email,city,state,country,password) {
                 this.store.createRecord('user', {
-                    name: name,
-                    email: email,
-                    age: age,
-                    city: city,
-                    state: state,
-                    country: country,
-                    password: password
+                    name,
+                    email,
+                    age,
+                    city,
+                    state,
+                    country,
+                    password
                 }).save().then(signupresponse => {
-                    if (signupresponse === true) {
+                    if (signupresponse) {
                         this.transitionToRoute('login');
                     } else {
                         toastr.error('Some Error occured');
