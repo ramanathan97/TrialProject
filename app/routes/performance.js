@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
 export default Route.extend({
     beforeModel() {
-        let access = localStorage.getItem("servervalue");
-        if (access === false || access === null) {
-            this.transitionTo('login')
+        let access = localStorage.getItem("loginpermit");
+        if(access!=='true'){
+            this.transitionTo('login');
         }
     },
     model() {
@@ -12,13 +12,11 @@ export default Route.extend({
     setupController(controller, model) {
         this._super(controller, model);
         controller.set("title", 'Performance Chart');
-        controller.set("dataSource", null)
-        controller.set("display", '')
-        controller.set("getdata", false)
+        controller.set("display", '');
         controller.set('actions', {
             performancechart() {
-                let myDataSource = {}
-                this.set("display", "displaychart")
+                let myDataSource = {};
+                this.set("display", "displaychart");
                 let data = [];
                 this.model.forEach(element => {
                     data.push({
@@ -34,8 +32,8 @@ export default Route.extend({
                         },
                         data: data
                     };
-                    this.set('dataSource', myDataSource);
                 })
+                this.set('dataSource', myDataSource);
             },
             logout() {
                 localStorage.clear();
@@ -44,5 +42,3 @@ export default Route.extend({
         })
     }
 });
-
-
