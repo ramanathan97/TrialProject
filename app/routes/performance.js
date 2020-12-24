@@ -18,10 +18,10 @@ export default Route.extend({
                 let myDataSource = {};
                 this.set("display", "displaychart");
                 let data = [];
-                this.model.forEach(element => {
+                this.model.forEach(userdata => {
                     data.push({
-                        label: element.user.content.name,
-                        value: element.duration.toString()
+                        label: userdata.user.content.name,
+                        value: userdata.duration.toString()
                     })
                     myDataSource = {
                         chart: {
