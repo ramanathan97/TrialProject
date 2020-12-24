@@ -3,7 +3,7 @@ export default Route.extend({
     beforeModel() {
         let access = localStorage.getItem("loginpermit");
         if(access!=='true'){
-            this.transitionTo('login');
+            this.transitionTo('login')
         }
     },
     model() {
@@ -22,17 +22,17 @@ export default Route.extend({
                     data.push({
                         label: userdata.user.content.name,
                         value: userdata.duration.toString()
-                    })
-                    myDataSource = {
-                        chart: {
-                            caption: "Performances",
-                            subCaption: 'Performances based on id',
-                            numberSuffix: 'km',
-                            theme: 'fint'
-                        },
-                        data: data
-                    };
+                    })             
                 })
+                myDataSource = {
+                    chart: {
+                        caption: "Performances",
+                        subCaption: 'Performances based on id',
+                        numberSuffix: 'km',
+                        theme: 'fint'
+                    },
+                    data: data
+                };
                 this.set('dataSource', myDataSource);
             },
             logout() {
