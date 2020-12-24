@@ -1,4 +1,4 @@
-iimport Route from '@ember/routing/route';
+import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
@@ -18,7 +18,7 @@ export default Route.extend({
                     }),
                   }).then(loginpermit => {
                   localStorage.setItem('loginpermit', loginpermit);
-                    if (loginpermit === true) {
+                    if (loginpermit) {
                         this.transitionToRoute('performance');
                     } else {
                      toastr.error('Please enter correct user name and password');
@@ -28,6 +28,5 @@ export default Route.extend({
         })
     },
 });
-
 
 
