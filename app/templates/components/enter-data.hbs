@@ -3,13 +3,13 @@
     <h1>Enter your data</h1>
   </div>
   <div class="enterdatabody">
-    <form {{action "submitData" on="submit"}}>
-      <label for="">Enter your starting date and time</label><br><br>
-      {{input type="datetime-local" name="starttime" value=starttime }}<br><br>
-      <label for="">Enter your duration of running</label><br><br>
-      {{input type="text" name="duration" value=duration }}<br><br>
-      <label for="">Enter your distance travelled</label><br><br>
-      {{input type="text" name="distance" value=distance }}<br><br>
+    <form {{action "submitData" duration distance on="submit"}}>
+      <label for="">Enter your starting date and time</label>
+      {{input type="datetime-local" name="starttime" value=starttime }}
+      <label for="">Enter your duration of running</label>
+      {{input type="text" name="duration" value=duration }}
+      <label for="">Enter your distance travelled</label>
+      {{input type="text" name="distance" value=distance }}
       <button type="submit" id="datasubmit">Submit</button>
     </form>
   </div>
