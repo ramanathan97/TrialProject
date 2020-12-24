@@ -10,7 +10,7 @@
     </div>
     <div class="rankbody">
         {{#if (eq display "rankCity")}}
-            <div class="rankCity">
+            <div class="rankcity">
                 <label for="">Enter the city</label>
                 {{input type="text"name="city" value=city }}
                 <button onclick={{action (mut display) "sortcity"}}>Sort by City</button>
@@ -61,6 +61,6 @@
             </table>
         {{/if}}
     </div>
-    <div id="linktoperformance">{{#link-to "performance" }}{{"Performance"}}{{/link-to}}</div>
+    {{#link-to "performance" id="linktoperformance"}}{{"Performance"}}{{/link-to}}
     <button {{action 'logout'}} id="logout">Logout</button>
 </div>
