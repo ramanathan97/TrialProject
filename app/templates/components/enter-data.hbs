@@ -5,11 +5,11 @@
   <div class="enterdatabody">
     <form {{action "submitData" duration distance on="submit"}}>
       <label for="">Enter your starting date and time</label>
-      {{input type="datetime-local" name="starttime" value=starttime }}
+      {{input type="datetime-local" name="starttime" value=starttime class="inputbox"}}
       <label for="">Enter your duration of running</label>
-      {{input type="text" name="duration" value=duration }}
+      {{input type="text" name="duration" value=duration class="inputbox"}}
       <label for="">Enter your distance travelled</label>
-      {{input type="text" name="distance" value=distance }}
+      {{input type="text" name="distance" value=distance class="inputbox"}}
       <button type="submit" id="datasubmit">Submit</button>
     </form>
   </div>
