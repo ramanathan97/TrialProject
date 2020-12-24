@@ -1,16 +1,12 @@
-
- <div id="wholelogin">
+<div id="wholelogin">
   <form {{action 'userCheck' on="submit"}}>
     <div class="loginhead"><h1>Run Tracker</h1></div>
     <div class="loginbody">
      <label for="" >Email</label>
-      {{input required=true type="text" name="email" value=email }}
+      {{input required=true type="text" name="email" value=email class="inputbox"}}
       <label for="" >password</label> 
-      {{input required=true type="password"name="password" value=password }}
+      {{input required=true type="password"name="password" value=password class="inputbox"}}
     </div>
   <button type="submit">Login</button>
   </form>
 </div>
-{{outlet}}
-
-
