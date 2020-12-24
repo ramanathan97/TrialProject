@@ -10,9 +10,11 @@
     </div>
     <div class="rankbody">
         {{#if (eq display "rankCity")}}
-            <label for="">Enter the city</label><br>
-            {{input type="text"name="city" value=city }}<br><br>
-            <button onclick={{action (mut display) "sortcity"}}>Sort by City</button>
+            <div class="rankCity">
+                <label for="">Enter the city</label>
+                {{input type="text"name="city" value=city }}
+                <button onclick={{action (mut display) "sortcity"}}>Sort by City</button>
+            </div>
         {{/if}}
         {{#if (eq display "sortcity")}}
             <table>
