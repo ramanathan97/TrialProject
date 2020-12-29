@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 export default Route.extend({
     beforeModel() {
-        let access = localStorage.getItem("loginpermit");
-        if(access!=='true'){
+        let access =JSON.parse( localStorage.getItem("loginpermit"));
+        if(access!==true){
             this.transitionTo('login')
         }
     },
