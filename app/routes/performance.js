@@ -31,7 +31,7 @@ export default Route.extend({
                         numberSuffix: 'km',
                         theme: 'fint'
                     },
-                    data: data
+                    data
                 };
                 this.set('dataSource', myDataSource);
             },
